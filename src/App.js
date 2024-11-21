@@ -11,7 +11,7 @@ function App() {
   const [weeklyItems, setWeeklyItems] = useState(storageItems);
 
   return (
-    <div className="font-mono bg-gradient-to-r min-h-screen from-cyan-500 text-center to-blue-500">
+    <div className="flex flex-col min-h-screen font-mono bg-gradient-to-r  from-cyan-500 text-center to-blue-500">
       <Marquee />
       <main className="max-w-3xl ml-auto mr-auto px-1">
         <h1 className="text-xl md:text-3xl font-semibold mt-10 md:mt-20 mb-3">
@@ -23,6 +23,9 @@ function App() {
         <AddItem weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
         <ListItems weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
       </main>
+      <footer className="mt-auto mb-3">
+        <i className="text-xs ">*This app has a device based memory</i>
+      </footer>
     </div>
   );
 }
