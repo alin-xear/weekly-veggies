@@ -1,0 +1,30 @@
+.marquee {
+  height: 25px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  letter-spacing: 105px;
+}
+
+.marquee div {
+  display: block;
+  width: 200%;
+  height: 40px;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+  float: left;
+  width: 100%;
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}

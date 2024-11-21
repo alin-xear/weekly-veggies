@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddItem from "./components/AddItem";
+import Marquee from "./components/marquee/Marquee";
+import ListItems from "./components/ListItems";
+
+const storageItems = localStorage.getItem("weeklyItems")
+  ? JSON.parse(localStorage.getItem("weeklyItems"))
+  : [];
 
 function App() {
+  const [weeklyItems, setWeeklyItems] = useState(storageItems);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <div className="font-mono bg-gradient-to-r min-h-screen from-cyan-500 text-center to-blue-500">
+      <Marquee />
+      <main className="max-w-3xl ml-auto mr-auto px-1">
+        <h1 className="text-xl md:text-3xl font-semibold mt-10 md:mt-20 mb-3">
+          Experts say we should eat 20 to 30 fruits or vegetables weekly.
+        </h1>
+        <p className="text-lg mb-10 md:mb-20">
+          You can use the app below to track your progress.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <AddItem weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
+        <ListItems weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
+      </main>
     </div>
   );
 }
