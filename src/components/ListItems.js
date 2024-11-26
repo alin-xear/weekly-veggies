@@ -15,7 +15,7 @@ function ListItems({ weeklyItems, setWeeklyItems }) {
   const sortedArray = weeklyItems.slice().sort(function sortByDay(a, b) {
     let day1 = a.day.toLowerCase();
     let day2 = b.day.toLowerCase();
-    return sorter[day1] - sorter[day2];
+    return sorter[day2] - sorter[day1];
   });
 
   function handleDeleteItem(name) {
@@ -28,7 +28,9 @@ function ListItems({ weeklyItems, setWeeklyItems }) {
     <div>
       <p className="my-10 ">
         You have eaten{" "}
-        <span className="font-semibold text-5xl">{weeklyItems.length}</span>{" "}
+        <span className="text-shadow font-semibold text-5xl">
+          {weeklyItems.length}
+        </span>{" "}
         greens this week
       </p>
       <button
