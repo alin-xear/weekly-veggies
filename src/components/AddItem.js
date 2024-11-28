@@ -15,6 +15,7 @@ function AddItem({ weeklyItems, setWeeklyItems }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!item || item === " ") return;
     setItem("");
     setWeeklyItems([
       ...weeklyItems,
