@@ -7,9 +7,24 @@ const storageItems = localStorage.getItem("weeklyItems")
   ? JSON.parse(localStorage.getItem("weeklyItems"))
   : [];
 
+const sorter = {
+  // "sunday": 0, // << if sunday is first day of week
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
+  sunday: 7,
+};
+
 function App() {
   const [weeklyItems, setWeeklyItems] = useState(storageItems);
-
+  const sortedArray = weeklyItems.slice().sort(function sortByDay(a, b) {
+    let day1 = a.day.toLowerCase();
+    let day2 = b.day.toLowerCase();
+    return sorter[day2] - sorter[day1];
+  });
   return (
     <div className="flex flex-col min-h-screen font-mono bg-gradient-to-r  from-cyan-500 text-center to-blue-500">
       <Marquee />
@@ -20,8 +35,8 @@ function App() {
         <p className="text-lg mb-10 md:mb-20">
           You can use the app below to track your progress.
         </p>
-        <AddItem weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
-        <ListItems weeklyItems={weeklyItems} setWeeklyItems={setWeeklyItems} />
+        <AddItem weeklyItems={sortedArray} setWeeklyItems={setWeeklyItems} />
+        <ListItems weeklyItems={sortedArray} setWeeklyItems={setWeeklyItems} />
       </main>
       <footer className="mt-auto mb-3">
         <i className="text-xs ">*This app has a device based memory</i>

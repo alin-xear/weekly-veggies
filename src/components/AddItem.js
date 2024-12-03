@@ -18,8 +18,8 @@ function AddItem({ weeklyItems, setWeeklyItems }) {
     if (!item || item === " ") return;
     setItem("");
     setWeeklyItems([
-      ...weeklyItems,
       { name: item, day: weekday[new Date().getDay()] },
+      ...weeklyItems,
     ]);
   }
 

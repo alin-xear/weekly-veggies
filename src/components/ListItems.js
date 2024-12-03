@@ -1,23 +1,6 @@
 import Item from "./Item";
 
-const sorter = {
-  // "sunday": 0, // << if sunday is first day of week
-  monday: 1,
-  tuesday: 2,
-  wednesday: 3,
-  thursday: 4,
-  friday: 5,
-  saturday: 6,
-  sunday: 7,
-};
-
 function ListItems({ weeklyItems, setWeeklyItems }) {
-  const sortedArray = weeklyItems.slice().sort(function sortByDay(a, b) {
-    let day1 = a.day.toLowerCase();
-    let day2 = b.day.toLowerCase();
-    return sorter[day2] - sorter[day1];
-  });
-
   function handleDeleteItem(name) {
     setWeeklyItems((weeklyItems) =>
       weeklyItems.filter((item) => item.name !== name)
@@ -40,7 +23,7 @@ function ListItems({ weeklyItems, setWeeklyItems }) {
         Reset
       </button>
       <ul className="mt-9 flex flex-wrap">
-        {sortedArray.map((item) => (
+        {weeklyItems.map((item) => (
           <Item
             handleDeleteItem={handleDeleteItem}
             item={item}
